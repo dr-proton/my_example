@@ -1,7 +1,6 @@
 def get_int_vlan_map(config_filename):
     mode_access = {}
     mode_trunk = {}
-    lst = []
 
     with open(config_filename, 'r') as f:
         for i in f:
