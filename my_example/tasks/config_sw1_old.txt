@@ -1,4 +1,3 @@
-
 Current configuration : 2033 bytes
 !
 ! Last configuration change at 13:11:59 UTC Thu Feb 25 2016
@@ -20,45 +19,36 @@ hostname sw1
 !
 !
 !
-interface FastEthernet0/0
- switchport mode access
- switchport access vlan 10
+interface Ethernet0/0
  duplex auto
 !
-interface FastEthernet0/1
+interface Ethernet0/1
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100,200
+ switchport trunk allowed vlan 100
  switchport mode trunk
  duplex auto
+ spanning-tree portfast edge trunk
 !
-interface FastEthernet0/2
- switchport mode access
- switchport access vlan 20
+interface Ethernet0/2
  duplex auto
 !         
-interface FastEthernet0/3
+interface Ethernet0/3
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 100,300,400,500,600
+ switchport trunk allowed vlan 100
  duplex auto
  switchport mode trunk
+ spanning-tree portfast edge trunk
 !         
-interface FastEthernet1/0
- switchport mode access
- switchport access vlan 20
+interface Ethernet1/0
  duplex auto
 !
-interface FastEthernet1/1
- switchport mode access
- switchport access vlan 30
+interface Ethernet1/1
  duplex auto
 !
-interface FastEthernet1/2
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 400,500,600
- switchport mode trunk
+interface Ethernet1/2
  duplex auto
 !
-interface FastEthernet1/3
+interface Ethernet1/3
  duplex auto
 !
 interface Vlan100
