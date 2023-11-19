@@ -87,6 +87,7 @@ import re
 # line = '00:09:BB:3D:D6:58  10.1.10.2 86250   dhcp-snooping   10  FastEthernet0/1'
 # match = re.search(r"(?P<mac>\S+) +(?P<address>\S+) +\d+ +\S+ +(?P<vlan>\d+) +(?P<intf>\S+)", line)
 # print(f"MAC: {match.group('mac')}\nIP: {match.group('address')}\nVLAN ID: {match.group('vlan')}\nInterface: {match.group('intf')}")
+<<<<<<< HEAD
 lst = []
 req = r"(?P<mac>\S+) +(?P<address>\S+) +\d+ +\S+ +(?P<vlan>\d+) +(?P<intf>\S+)"
 
@@ -100,3 +101,33 @@ for i, j in enumerate(lst, 1):
     print(f"\nПараметры устройства: {i}")
     for k,v in j.items():
         print(f"\t{k}: {v}")
+=======
+# lst = []
+# req = r"(?P<mac>\S+) +(?P<address>\S+) +\d+ +\S+ +(?P<vlan>\d+) +(?P<intf>\S+)"
+
+# with open("dhcp_snooping.txt", 'r') as data:
+#     for item in data:
+#         res = re.search(req, item)
+#         if res:
+#             lst.append(res.groupdict())
+
+# for i, j in enumerate(lst, 1):
+#     print(f"\nПараметры устройства: {i}")
+#     for k,v in j.items():
+#         print(f"\t{k}: {v}")
+
+bgp = '''
+ R9# sh ip bgp | be Network
+Network          Next Hop       Metric LocPrf Weight Path
+192.168.66.0/24  192.168.79.7                       0 500 500 500 i
+*>                  192.168.89.8                       0 800 700 i
+ *  192.168.67.0/24  192.168.79.7         0             0 700 700 700 i
+*>                  192.168.89.8                       0 800 700 i
+*  192.168.88.0/24  192.168.79.7                       0 700 700 700 i
+ *>                  192.168.89.8         0             0 800 800 i
+ '''
+for item in bgp.split("\n"):
+    match = re.search(r"(?P<as>\d+) (?P=as)", item)
+    if match:
+        print(item)
+>>>>>>> apelevin
