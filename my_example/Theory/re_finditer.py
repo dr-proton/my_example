@@ -1,0 +1,21 @@
+import re
+
+sh_ip_int_br = '''
+R1#show ip interface brief
+Interface             IP-Address      OK? Method Status           Protocol
+FastEthernet0/0       15.0.15.1       YES manual up               up
+FastEthernet0/1       10.0.12.1       YES manual up               up
+FastEthernet0/2       10.0.13.1       YES manual up               up
+FastEthernet0/3       unassigned      YES unset  up               up
+Loopback0             10.1.1.1        YES manual up               up
+Loopback100           100.0.0.1       YES manual up               up
+'''
+
+result = re.finditer(r"(\S+) +"
+                     r"([\d.]+) +"
+                     r"(up|down|administratively down) +"
+                     r"(up|down)", 
+                     sh_ip_int_br)
+
+for data in result:
+    print(data)
