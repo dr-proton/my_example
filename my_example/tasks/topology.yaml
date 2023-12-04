@@ -1,0 +1,11 @@
+- r1:
+    Eth 0/0:
+      SW1: Eth 0/1
+  r2:
+    Eth 0/0:
+      SW1: Eth 0/2
+    Eth 0/1:
+      SW2: Eth 0/11
+  r3:
+    Eth 0/0:
+      SW1: Eth 0/3
